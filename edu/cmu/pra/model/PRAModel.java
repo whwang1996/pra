@@ -2,6 +2,7 @@ package edu.cmu.pra.model;
 
 import java.io.BufferedWriter;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import edu.cmu.lti.algorithm.container.MapID;
 import edu.cmu.lti.algorithm.container.MapIX;
@@ -119,6 +120,20 @@ public abstract class PRAModel extends AModel {
 			
 			if (!add_all)
 			if (stat.hit_ < p.min_feature_hit) continue;
+			
+			boolean is_blocked_path = false;
+			for(Entry<Integer, VectorS> entry :walker_.p.blocked_paths.entrySet()){
+				VectorS pathS = entry.getValue();
+				for (String p: pathS) {
+					if (walker_.getEdgeTypeNames(path.sub(1)).join(",").equals(p)) {
+						is_blocked_path = true;
+					}
+				}
+			}
+			if (!add_all)
+			if (is_blocked_path) {
+				continue;
+			}
 			
 			FFile.writeln(writer,stat.print() 
 					+ "\t"+ path.get(0) + "~" 

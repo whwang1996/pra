@@ -344,8 +344,8 @@ public class SmallJobs {
 				 RelationLine.getDomains(), RelationLine.getRanges());
 	}
 
-	public static int createQueries_max_relation_count = 10000;
-	public static int createQueries_min_relation_count = 10;
+	public static int createQueries_max_relation_count = 100000000;
+	public static int createQueries_min_relation_count = 1;
 	
 	// find nodes having certain relation with the src_node
 	//public SetI repeatedExpand(String seed, String relation) {

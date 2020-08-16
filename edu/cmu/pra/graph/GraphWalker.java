@@ -189,7 +189,7 @@ public class GraphWalker {
 		public static void parsePaths(String paths, MapIVecS mvsPath) {
 			if (paths == null) return;
 			if (paths.length() == 0) return;
-			for (String path : paths.split(",")) {
+			for (String path : paths.split(";")) {
 				int p = path.indexOf(field_separator);
 				if (p == -1) FSystem.die("sepPathField=" + field_separator + " not found");
 				int ic = Integer.parseInt(path.substring(0, p));
